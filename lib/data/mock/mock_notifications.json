@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "userId": "1",
+    "title": "Nouveau message",
+    "message": "Mr NADIA Sebastian souhaite louer votre appartement",
+    "type": "message",
+    "isRead": false,
+    "createdAt": "2024-09-15T14:10:00Z",
+    "relatedId": "1"
+  },
+  {
+    "id": "2",
+    "userId": "1",
+    "title": "Accord trouvé",
+    "message": "Mme BIYA Jeanne Irène - Accord trouvé pour la maison Omnisport",
+    "type": "agreement",
+    "isRead": true,
+    "createdAt": "2024-09-14T16:45:00Z",
+    "relatedId": "2"
+  },
+  {
+    "id": "3",
+    "userId": "2",
+    "title": "Nouvelle annonce",
+    "message": "Nouvel appartement disponible à Douala qui pourrait vous intéresser",
+    "type": "new_property",
+    "isRead": false,
+    "createdAt": "2024-09-14T13:20:00Z",
+    "relatedId": "5"
+  },
+  {
+    "id": "4",
+    "userId": "2",
+    "title": "Réponse reçue",
+    "message": "ANDRE-MARIE TALLA a répondu à votre message",
+    "type": "message",
+    "isRead": true,
+    "createdAt": "2024-09-15T12:15:00Z",
+    "relatedId": "1"
+  },
+  {
+    "id": "5",
+    "userId": "3",
+    "title": "Votre annonce a été vue",
+    "message": "Votre studio à Bastos a reçu 15 nouvelles vues aujourd'hui",
+    "type": "property_view",
+    "isRead": false,
+    "createdAt": "2024-09-15T09:30:00Z",
+    "relatedId": "2"
+  },
+  {
+    "id": "6",
+    "userId": "4",
+    "title": "Félicitations !",
+    "message": "Votre dossier numérique premium est maintenant actif",
+    "type": "system",
+    "isRead": true,
+    "createdAt": "2024-09-13T08:00:00Z",
+    "relatedId": null
+  }
+]

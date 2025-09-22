@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "email": "andre.marie@gmail.com",
+    "phone": "+237677123456",
+    "firstName": "André-Marie",
+    "lastName": "TALLA",
+    "userType": "proprietaire",
+    "profilePicture": null,
+    "isKycVerified": true,
+    "location": "Yaoundé",
+    "createdAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "id": "2",
+    "email": "biya.paul@outlook.com",
+    "phone": "+237655987654",
+    "firstName": "Paul",
+    "lastName": "BIYA",
+    "userType": "locataire",
+    "profilePicture": null,
+    "isKycVerified": false,
+    "location": "Douala",
+    "createdAt": "2024-02-20T14:15:00Z"
+  },
+  {
+    "id": "3",
+    "email": "nadia.sebastian@yahoo.fr",
+    "phone": "+237698456789",
+    "firstName": "Nadia",
+    "lastName": "SEBASTIAN",
+    "userType": "proprietaire",
+    "profilePicture": null,
+    "isKycVerified": true,
+    "location": "Bafoussam",
+    "createdAt": "2024-01-10T09:20:00Z"
+  },
+  {
+    "id": "4",
+    "email": "jeanne.irene@gmail.com",
+    "phone": "+237674321098",
+    "firstName": "Jeanne",
+    "lastName": "IRÈNE",
+    "userType": "locataire",
+    "profilePicture": null,
+    "isKycVerified": false,
+    "location": "Douala",
+    "createdAt": "2024-03-05T16:45:00Z"
+  }
+]

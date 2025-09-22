@@ -1,0 +1,248 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "REA - Real Estate Agent",
+  "appSubtitle": "PROPERTY MANAGEMENT",
+  "theRealEstateAgent": "THE REAL ESTATE AGENT",
+
+  "welcome": "WELCOME",
+  "welcomeSubtitle": "TO REA",
+  "welcomeDescription": "Enter your personal details to\nyour user account",
+  "login": "Sign In",
+  "register": "Sign Up",
+  "signUp": "Sign Up",
+
+  "loginTitle": "Get Started",
+  "phoneNumber": "Phone number",
+  "phoneNumberHint": "Enter your phone number",
+  "code": "Password",
+  "codeHint": "Verification code",
+  "owner": "Owner",
+  "tenant": "Tenant",
+  "stayConnected": "Stay connected",
+  "forgotPassword": "forgot password?",
+  "continueWithGoogle": "Google",
+  "continueWithApple": "Apple",
+  "or": "OR",
+
+  "registerTitle": "Welcome",
+  "country": "Country",
+  "countryHint": "Select your country",
+  "identity": "Identity",
+  "firstName": "FIRST NAME",
+  "lastName": "LAST NAME",
+  "phoneNumberMomo": "PHONE NUMBER OM/MOMO",
+  "acceptTerms": "I accept the processing of personal data",
+
+  "home": "Home",
+  "search": "Search",
+  "add": "Add",
+  "becomeOwner": "Become Owner",
+  "chat": "Chat",
+  "notifications": "Notifications",
+
+  "searchHint": "Search by location, type...",
+  "residential": "Residential",
+  "commercial": "Commercial",
+  "land": "Land",
+  "special": "Special",
+
+  "propertyDetails": "PROPERTY DETAILS:",
+  "propertyType": "TYPE:",
+  "rooms": "ROOMS:",
+  "bathrooms": "BATHROOMS:",
+  "surface": "SURFACE:",
+  "category": "CATEGORY:",
+  "owner2": "OWNER?",
+  "verified": "VERIFIED",
+  "trustScore": "Trust score",
+  "contactOwner": "CONTACT OWNER",
+  "virtualVisit": "VIRTUAL VISIT",
+
+  "apartment": "Apartment",
+  "house": "House",
+  "studio": "Studio",
+  "room": "Room",
+
+  "economical": "Economical",
+  "standard": "Standard",
+  "luxury": "Luxury",
+
+  "forRent": "FOR RENT",
+  "rented": "RENTED",
+  "available": "AVAILABLE",
+
+  "conversations": "Conversations",
+  "profile": "Profile",
+  "settings": "Settings",
+
+  "myAnnouncements": "My listings",
+  "statistics": "Statistics",
+  "addProperty": "Add property",
+  "addNewAnnouncement": "Add new listing",
+
+  "noResultsFound": "No results found",
+  "tryModifyFilters": "Try modifying your filters",
+  "noPropertyFound": "No property found",
+
+  "advancedFilters": "Advanced filters",
+  "propertyTypeColon": "Property type:",
+  "standingColon": "Standing:",
+  "applyFilters": "Apply filters",
+
+  "comingSoon": "Coming Soon",
+  "comingSoonMessage": "The \"{feature}\" section will be available in a future version.",
+  "@comingSoonMessage": {
+    "placeholders": {
+      "feature": {
+        "type": "String"
+      }
+    }
+  },
+
+  "menuAccueil": "Home",
+  "menuRendements": "Returns",
+  "menuAdvancedFeatures": "Advanced features",
+  "menuServices": "Services",
+  "menuCategories": "Categories",
+  "menuPaymentMethods": "Accepted payment methods",
+  "menuAbout": "About",
+
+  "fillAllFields": "Please fill in all fields",
+  "fillAllFieldsAndAcceptTerms": "Please fill in all fields and accept the terms",
+  "languageChanged": "Language changed to: {language}",
+  "@languageChanged": {
+    "placeholders": {
+      "language": {
+        "type": "String"
+      }
+    }
+  },
+  "themeChanged": "Theme changed to: {theme}",
+  "@themeChanged": {
+    "placeholders": {
+      "theme": {
+        "type": "String"
+      }
+    }
+  },
+  "light": "Light",
+  "dark": "Dark",
+
+  "googleConnectionSoon": "Google sign-in coming soon",
+  "appleConnectionSoon": "Apple sign-in coming soon",
+  "googleRegisterSoon": "Google sign-up coming soon",
+  "appleRegisterSoon": "Apple sign-up coming soon",
+
+  "modifyProfilePicture": "MODIFY PROFILE PICTURE",
+  "accountType": "ACCOUNT TYPE",
+  "names": "NAMES",
+  "firstNames": "FIRST NAMES",
+  "email": "EMAIL",
+  "telephone": "PHONE",
+  "password": "PASSWORD",
+  "location": "LOCATION",
+  "myFavorites": "MY FAVORITES",
+  "change": "Change",
+  "disconnect": "SIGN OUT",
+  "goods": "properties",
+
+  "ok": "OK",
+  "cancel": "Cancel",
+  "yes": "Yes",
+  "no": "No",
+  "advertisingSpace": "Advertising space",
+  "city": "City",
+  "district": "District",
+  "budget": "Budget",
+  "searchButton": "Search",
+  "favorites": "Favorites",
+  "myFavoriteProperties": "My favorite properties",
+  "searchResults": "Search results",
+  "searchCriteria": "Search criteria",
+  "refineSearch": "Refine search...",
+  "resultsFound": "{count} results found",
+  "@resultsFound": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "clearFilters": "Clear filters",
+  "all": "All",
+  "sortRecent": "Most recent",
+  "sortPriceAsc": "Price ascending",
+  "sortPriceDesc": "Price descending",
+  "sortRating": "Best rated",
+  "filtersActive": "Filters active",
+  "noResultsMessage": "Try modifying your search criteria or clearing filters to see more results.",
+  "clearFiltersAndRetry": "Clear filters and retry",
+  "dashboard": "Dashboard",
+  "myProperties": "My Properties",
+  "searchHistory": "Search History",
+  "tenantSearchHistoryDesc": "Your past searches and housing",
+  "tenantStatsDesc": "Your statistics and analytics",
+  "communicationsDesc": "Your reviews and messages",
+  "becomeOwnerDesc": "Switch role to publish",
+  "ownerAnnouncementsDesc": "Manage your published listings",
+  "ownerStatsDesc": "Performance and analytics",
+  "addPropertyDesc": "Publish a new listing",
+  "communications": "Communications",
+  "agreementFound": "Agreement found",
+  "noConversationsYet": "No conversations yet",
+  "startConversationByContacting": "Start by contacting an owner from the listings",
+  "typeMessage": "Type your message...",
+  "confirmAgreement": "Confirm agreement",
+  "confirmAgreementMessage": "Are you sure you want to mark this rental as concluded?",
+  "confirm": "Confirm",
+  "agreementConfirmedMessage": "Congratulations! Rental confirmed successfully",
+  "conversationOptions": "Conversation options",
+  "leaveReview": "Leave a review",
+  "rateYourExperience": "Rate your experience",
+  "blockProfile": "Block this profile",
+  "blockProfileDescription": "This person will no longer be able to contact you",
+  "reportProfile": "Report this profile",
+  "reportInappropriateBehavior": "Report inappropriate behavior",
+  "endConversation": "End conversation",
+  "endConversationDescription": "Permanently close this conversation",
+  "reviewFeatureComingSoon": "The review feature will be available soon",
+  "confirmBlockMessage": "Do you really want to block this profile? This action is irreversible.",
+  "block": "Block",
+  "reportFeatureComingSoon": "The reporting feature will be available soon",
+  "confirmEndConversationMessage": "This action will permanently delete the conversation. Continue?",
+  "end": "End",
+  "cancelAgreement": "Cancel agreement",
+  "cancelAgreementMessage": "Are you sure you want to cancel the agreement with this tenant?",
+  "agreementConfirmed": "Agreement confirmed!",
+  "agreementCancelled": "Agreement cancelled",
+  "agreementReached": "🤝 Agreement reached - Negotiation complete",
+
+  "noConversations": "No conversations",
+  "noConversationsMessage": "You don't have any conversations yet",
+  "startFirstConversation": "Start by contacting an owner from the listings",
+
+  "noNotifications": "No notifications",
+  "noNotificationsMessage": "You're all caught up!",
+
+  "messagingTitle": "Messaging",
+  "newMessage": "New message",
+  "unreadMessages": "unread messages",
+
+  "darkMode": "Dark mode",
+  "lightMode": "Light mode",
+  "language": "Language",
+  "french": "Français",
+  "english": "English",
+  "changeLanguage": "Change language",
+  "version": "Version",
+
+  "personalInfo": "Personal information",
+  "editProfile": "Edit profile",
+  "help": "Help",
+  "about": "About",
+  "logout": "Logout",
+
+  "comingSoonFeature": "Coming soon feature",
+  "test": "test"
+}

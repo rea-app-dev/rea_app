@@ -1,0 +1,188 @@
+[
+  {
+    "id": "1",
+    "propertyId": "1",
+    "propertyTitle": "Appartement 03 Chambres - Bonanjo",
+    "participants": ["1", "2"],
+    "participantsInfo": [
+      {
+        "id": "1",
+        "name": "André-Marie TALLA",
+        "avatar": null,
+        "userType": "proprietaire",
+        "isVerified": true
+      },
+      {
+        "id": "2",
+        "name": "Paul BIYA",
+        "avatar": null,
+        "userType": "locataire",
+        "isVerified": false
+      }
+    ],
+    "lastMessage": "Parfait, je prends ! Les conditions me conviennent",
+    "lastMessageTime": "2024-09-15T16:30:00Z",
+    "lastMessageSenderId": "2",
+    "isAccordTrouve": false,
+    "unreadCount": 1,
+    "isBlocked": false,
+    "messages": [
+      {
+        "id": "msg1",
+        "senderId": "2",
+        "content": "Bonjour, je suis intéressé par votre appartement à Bonanjo",
+        "timestamp": "2024-09-15T10:15:00Z",
+        "isRead": true,
+        "messageType": "text"
+      },
+      {
+        "id": "msg2",
+        "senderId": "1",
+        "content": "Bonjour ! Merci pour votre intérêt. L'appartement est effectivement disponible.",
+        "timestamp": "2024-09-15T10:45:00Z",
+        "isRead": true,
+        "messageType": "text"
+      },
+      {
+        "id": "msg3",
+        "senderId": "2",
+        "content": "Parfait ! Pouvons-nous organiser une visite cette semaine ?",
+        "timestamp": "2024-09-15T11:20:00Z",
+        "isRead": true,
+        "messageType": "text"
+      },
+      {
+        "id": "msg4",
+        "senderId": "1",
+        "content": "Bien sûr, êtes-vous libre demain après-midi vers 15h ?",
+        "timestamp": "2024-09-15T12:10:00Z",
+        "isRead": true,
+        "messageType": "text"
+      },
+      {
+        "id": "msg5",
+        "senderId": "2",
+        "content": "Parfait, je prends ! Les conditions me conviennent",
+        "timestamp": "2024-09-15T16:30:00Z",
+        "isRead": false,
+        "messageType": "text"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "propertyId": "3",
+    "propertyTitle": "Maison 4 Chambres - Omnisport",
+    "participants": ["1", "4"],
+    "participantsInfo": [
+      {
+        "id": "1",
+        "name": "André-Marie TALLA",
+        "avatar": null,
+        "userType": "proprietaire",
+        "isVerified": true
+      },
+      {
+        "id": "4",
+        "name": "Jeanne IRÈNE",
+        "avatar": null,
+        "userType": "locataire",
+        "isVerified": true
+      }
+    ],
+    "lastMessage": "Accord trouvé ! Félicitations pour votre nouvelle maison",
+    "lastMessageTime": "2024-09-14T16:45:00Z",
+    "lastMessageSenderId": "1",
+    "isAccordTrouve": true,
+    "unreadCount": 0,
+    "isBlocked": false,
+    "messages": [
+      {
+        "id": "msg6",
+        "senderId": "4",
+        "content": "Bonjour, votre maison m'intéresse beaucoup",
+        "timestamp": "2024-09-14T09:30:00Z",
+        "isRead": true,
+        "messageType": "text"
+      },
+      {
+        "id": "msg7",
+        "senderId": "1",
+        "content": "Bonjour Jeanne ! La maison est libre pour visite quand vous voulez",
+        "timestamp": "2024-09-14T10:15:00Z",
+        "isRead": true,
+        "messageType": "text"
+      },
+      {
+        "id": "msg8",
+        "senderId": "4",
+        "content": "Excellent ! Je confirme ma location",
+        "timestamp": "2024-09-14T16:20:00Z",
+        "isRead": true,
+        "messageType": "text"
+      },
+      {
+        "id": "msg9",
+        "senderId": "1",
+        "content": "Accord trouvé ! Félicitations pour votre nouvelle maison",
+        "timestamp": "2024-09-14T16:45:00Z",
+        "isRead": true,
+        "messageType": "accord"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "propertyId": "2",
+    "propertyTitle": "Studio Moderne - Bastos",
+    "participants": ["3", "2"],
+    "participantsInfo": [
+      {
+        "id": "3",
+        "name": "Nadia SEBASTIAN",
+        "avatar": null,
+        "userType": "proprietaire",
+        "isVerified": true
+      },
+      {
+        "id": "2",
+        "name": "Paul BIYA",
+        "avatar": null,
+        "userType": "locataire",
+        "isVerified": false
+      }
+    ],
+    "lastMessage": "Merci pour les informations",
+    "lastMessageTime": "2024-09-13T11:20:00Z",
+    "lastMessageSenderId": "2",
+    "isAccordTrouve": false,
+    "unreadCount": 0,
+    "isBlocked": false,
+    "messages": [
+      {
+        "id": "msg10",
+        "senderId": "2",
+        "content": "Bonsoir, le studio inclut-il les charges ?",
+        "timestamp": "2024-09-13T08:45:00Z",
+        "isRead": true,
+        "messageType": "text"
+      },
+      {
+        "id": "msg11",
+        "senderId": "3",
+        "content": "Bonsoir ! Les charges d'eau et électricité sont incluses",
+        "timestamp": "2024-09-13T09:30:00Z",
+        "isRead": true,
+        "messageType": "text"
+      },
+      {
+        "id": "msg12",
+        "senderId": "2",
+        "content": "Merci pour les informations",
+        "timestamp": "2024-09-13T11:20:00Z",
+        "isRead": true,
+        "messageType": "text"
+      }
+    ]
+  }
+]
