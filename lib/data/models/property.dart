@@ -1,3 +1,5 @@
+import 'category.dart';
+
 class Property {
   final String id;
   final String title;
@@ -19,6 +21,8 @@ class Property {
   final double rating;
   final int viewsCount;
   final DateTime createdAt;
+  final PropertyCategory category;
+  final List<String>? tags; // Pour les caractéristiques supplémentaires
 
   Property({
     required this.id,
@@ -41,6 +45,8 @@ class Property {
     required this.rating,
     required this.viewsCount,
     required this.createdAt,
+    this.category = PropertyCategory.residential,
+    this.tags,
   });
 
   factory Property.fromJson(Map<String, dynamic> json) {
@@ -51,9 +57,12 @@ class Property {
       currency: json['currency'] ?? 'XAF',
       propertyType: PropertyType.values.firstWhere(
             (type) => type.name == json['propertyType'],
+        orElse: () => PropertyType.appartement,
       ),
       standing: Standing.values.firstWhere(
-            (standing) => standing.name == json['standing'],
+            (standing) => standing.name == json['standing'] ||
+            standing.name == json['standing']?.replaceAll(' ', '').toLowerCase(),
+        orElse: () => Standing.standard,
       ),
       rooms: json['rooms'],
       bathrooms: json['bathrooms'],
@@ -69,10 +78,49 @@ class Property {
       rating: json['rating'].toDouble(),
       viewsCount: json['viewsCount'],
       createdAt: DateTime.parse(json['createdAt']),
+      category: json['category'] != null
+          ? PropertyCategory.fromString(json['category'])
+          : PropertyCategory.residential,
+      tags: json['tags'] != null ? List<String>.from(json['tags']) : null,
     );
   }
 
-  String get formattedPrice => '$price $currency';
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'price': price,
+      'currency': currency,
+      'propertyType': propertyType.name,
+      'standing': standing.name,
+      'rooms': rooms,
+      'bathrooms': bathrooms,
+      'surface': surface,
+      'location': location,
+      'quartier': quartier,
+      'ville': ville,
+      'description': description,
+      'images': images,
+      'equipments': equipments,
+      'isAvailable': isAvailable,
+      'ownerId': ownerId,
+      'rating': rating,
+      'viewsCount': viewsCount,
+      'createdAt': createdAt.toIso8601String(),
+      'category': category.key,
+      'tags': tags,
+    };
+  }
+
+  String get formattedPrice {
+    if (price >= 1000000) {
+      return '${(price / 1000000).toStringAsFixed(1)}M $currency';
+    } else if (price >= 1000) {
+      return '${(price / 1000).toStringAsFixed(0)}K $currency';
+    }
+    return '$price $currency';
+  }
+
   String get propertyTypeText {
     switch (propertyType) {
       case PropertyType.appartement:
@@ -83,6 +131,12 @@ class Property {
         return 'Studio';
       case PropertyType.chambre:
         return 'Chambre';
+      case PropertyType.villa:
+        return 'Villa';
+      case PropertyType.duplex:
+        return 'Duplex';
+      case PropertyType.penthouse:
+        return 'Penthouse';
     }
   }
 
@@ -94,9 +148,77 @@ class Property {
         return 'Standard';
       case Standing.luxe:
         return 'Luxe';
+      case Standing.hautStanding:
+        return 'Haut Standing';
     }
+  }
+
+  Property copyWith({
+    String? id,
+    String? title,
+    int? price,
+    String? currency,
+    PropertyType? propertyType,
+    Standing? standing,
+    int? rooms,
+    int? bathrooms,
+    int? surface,
+    String? location,
+    String? quartier,
+    String? ville,
+    String? description,
+    List<String>? images,
+    List<String>? equipments,
+    bool? isAvailable,
+    String? ownerId,
+    double? rating,
+    int? viewsCount,
+    DateTime? createdAt,
+    PropertyCategory? category,
+    List<String>? tags,
+  }) {
+    return Property(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      price: price ?? this.price,
+      currency: currency ?? this.currency,
+      propertyType: propertyType ?? this.propertyType,
+      standing: standing ?? this.standing,
+      rooms: rooms ?? this.rooms,
+      bathrooms: bathrooms ?? this.bathrooms,
+      surface: surface ?? this.surface,
+      location: location ?? this.location,
+      quartier: quartier ?? this.quartier,
+      ville: ville ?? this.ville,
+      description: description ?? this.description,
+      images: images ?? this.images,
+      equipments: equipments ?? this.equipments,
+      isAvailable: isAvailable ?? this.isAvailable,
+      ownerId: ownerId ?? this.ownerId,
+      rating: rating ?? this.rating,
+      viewsCount: viewsCount ?? this.viewsCount,
+      createdAt: createdAt ?? this.createdAt,
+      category: category ?? this.category,
+      tags: tags ?? this.tags,
+    );
   }
 }
 
-enum PropertyType { appartement, maison, studio, chambre }
-enum Standing { economique, standard, luxe }
+// Enum étendu pour les types de propriétés
+enum PropertyType {
+  appartement,
+  maison,
+  studio,
+  chambre,
+  villa,
+  duplex,
+  penthouse,
+}
+
+// Enum étendu pour le standing
+enum Standing {
+  economique,
+  standard,
+  luxe,
+  hautStanding, // Pour "haut standing"
+}

@@ -75,6 +75,10 @@
   "conversations": "Conversations",
   "profile": "Profile",
   "settings": "Settings",
+  "villa": "Villa",
+  "duplex": "Duplex",
+  "penthouse": "Penthouse",
+  "highStanding": "High Standing",
 
   "myAnnouncements": "My listings",
   "statistics": "Statistics",
@@ -244,5 +248,172 @@
   "logout": "Logout",
 
   "comingSoonFeature": "Coming soon feature",
-  "test": "test"
+  "test": "test",
+
+  "propertyContactMessage": "Hello, I'm interested in your property: {propertyTitle}",
+  "@propertyContactMessage": {
+    "placeholders": {
+      "propertyTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "errorOpeningChat": "Error opening chat",
+  "loadingProperties": "Loading properties...",
+  "errorLoadingProperties": "Error loading properties",
+  "noPropertiesAvailable": "No properties available",
+  "propertyNotFound": "Property not found",
+  "invalidPropertyData": "Invalid property data",
+  "networkError": "Network error",
+  "serverError": "Server error",
+  "unknownError": "Unknown error",
+  "retry": "Retry",
+  "refresh": "Refresh",
+  "loading": "Loading...",
+  "saving": "Saving...",
+  "saved": "Saved",
+  "failed": "Failed",
+  "success": "Success",
+  "warning": "Warning",
+  "info": "Information",
+  "close": "Close",
+  "back": "Back",
+  "next": "Next",
+  "previous": "Previous",
+  "done": "Done",
+  "skip": "Skip",
+  "selectAll": "Select all",
+  "deselectAll": "Deselect all",
+  "noItemsSelected": "No items selected",
+  "itemsSelected": "{count} item(s) selected",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appDescription": "Find your ideal home in Cameroon with REA, the #1 property management platform.",
+
+  "propertyDetailsTitle": "PROPERTY DETAILS:",
+  "standing": "Standing",
+  "ownerInfo": "Owner information",
+
+  "photosVideos": "PHOTOS / VIDEOS",
+  "photos": "photos",
+  "perMonth": "per month",
+  "negotiable": "negotiable",
+  "viewsCount": "{count} views",
+  "@viewsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "publishedOn": "Published on {date}",
+  "@publishedOn": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+
+  "viewOnMap": "View on map",
+  "map": "Map",
+
+  "memberSince": "Member since {year}",
+  "@memberSince": {
+    "placeholders": {
+      "year": {"type": "String"}
+    }
+  },
+  "reviews": "{count} reviews",
+  "@reviews": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "call": "Call",
+  "shareProperty": "Share this property",
+  "copyLink": "Copy link",
+  "linkCopied": "Link copied to clipboard",
+
+  "virtualVisitComingSoon": "Virtual visit will be available soon for this property.",
+
+  "searchInConversations": "Search in conversations...",
+  "findProperties": "Find properties",
+  "now": "Now",
+  "minutesAgo": "{count} min ago",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "hoursAgo": "{count}h ago",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "daysAgo": "{count}d ago",
+  "@daysAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "weeksAgo": "{count} week(s) ago",
+  "@weeksAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "markAsRead": "Mark as read",
+  "pinConversation": "Pin conversation",
+  "deleteConversation": "Delete conversation",
+  "deleteConversationConfirm": "This action will permanently delete the conversation. Continue?",
+
+  "unreadNotifications": "{count} unread notifications",
+  "@unreadNotifications": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "markAllAsRead": "Mark all as read",
+  "unread": "Unread",
+  "messages": "Messages",
+  "properties": "Properties",
+  "noUnreadNotifications": "No unread notifications",
+  "noUnreadNotificationsMessage": "All your notifications have been read!",
+  "noMessageNotifications": "No messages",
+  "noMessageNotificationsMessage": "You don't have any message notifications.",
+  "noPropertyNotifications": "No property notifications",
+  "noPropertyNotificationsMessage": "No activity on your real estate properties.",
+  "notificationOptions": "Notification options",
+  "markAsUnread": "Mark as unread",
+  "deleteNotification": "Delete notification",
+
+  "more": "More",
+  "equipments": "Equipments",
+  "description": "Description",
+
+  "platformBadge": "Real Estate Platform",
+  "findYour": "Find your",
+  "idealHome": "Ideal Home",
+  "popularCategories": "Popular categories",
+  "newFeature": "New feature",
+  "discoverPremiumFeatures": "Discover premium features",
+  "citySearchHint": "Enter a city",
+  "budgetFcfa": "Budget (FCFA)",
+  "maxPriceHint": "Maximum price",
+
+  "delete": "Delete",
+  "negotiation": "Negotiation",
+  "takePhoto": "Take a photo",
+  "chooseFromGallery": "Choose from gallery",
+  "removePhoto": "Remove photo",
+  "verify": "Verify",
+
+  "helpDescription": "Get help and support",
+  "aboutDescription": "Learn more about this app",
+  "logoutConfirmation": "Do you really want to logout?"
+
 }

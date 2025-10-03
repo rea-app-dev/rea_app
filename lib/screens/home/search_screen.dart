@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../core/constants/colors.dart';
+import '../../core/routes/app_routes.dart';
 import '../../providers/property_provider.dart';
 import '../../data/models/property.dart';
 import '../../widgets/property/property_card.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class SearchScreen extends StatefulWidget {
   final String? searchQuery;
@@ -79,29 +79,28 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: _buildAppBar(l10n),
+      appBar: _buildAppBar(l10n, isDark),
       body: Column(
         children: [
-          _buildSearchBar(l10n),
-          if (_showFilters) _buildAdvancedFilters(l10n),
-          _buildFilterTabs(l10n),
-          _buildResultsSection(l10n),
+          _buildSearchSection(l10n, isDark),
+          if (_showFilters) _buildAdvancedFilters(l10n, isDark),
+          _buildFilterTabs(l10n, isDark),
+          _buildResultsSection(l10n, isDark),
         ],
       ),
     );
   }
 
-  AppBar _buildAppBar(AppLocalizations l10n) {
+  AppBar _buildAppBar(AppLocalizations l10n, bool isDark) {
     return AppBar(
       backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-      foregroundColor: Theme.of(context).brightness == Brightness.dark
-          ? AppColors.white
-          : AppColors.blue,
+      foregroundColor: isDark ? AppColors.white : AppColors.blue,
       elevation: 0,
-      title: const Text('Résultats de recherche'),
+      title: Text(l10n.searchResults),
       actions: [
         IconButton(
           icon: Icon(_showFilters ? Icons.keyboard_arrow_up : Icons.tune),
@@ -111,17 +110,17 @@ class _SearchScreenState extends State<SearchScreen> {
           icon: const Icon(Icons.sort),
           onSelected: (value) => setState(() => _sortBy = value),
           itemBuilder: (context) => [
-            const PopupMenuItem(value: 'recent', child: Text('Plus récent')),
-            const PopupMenuItem(value: 'price_asc', child: Text('Prix croissant')),
-            const PopupMenuItem(value: 'price_desc', child: Text('Prix décroissant')),
-            const PopupMenuItem(value: 'rating', child: Text('Mieux notés')),
+            PopupMenuItem(value: 'recent', child: Text(l10n.sortRecent)),
+            PopupMenuItem(value: 'price_asc', child: Text(l10n.sortPriceAsc)),
+            PopupMenuItem(value: 'price_desc', child: Text(l10n.sortPriceDesc)),
+            PopupMenuItem(value: 'rating', child: Text(l10n.sortRating)),
           ],
         ),
       ],
     );
   }
 
-  Widget _buildSearchBar(AppLocalizations l10n) {
+  Widget _buildSearchSection(AppLocalizations l10n, bool isDark) {
     return Container(
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -138,7 +137,7 @@ class _SearchScreenState extends State<SearchScreen> {
       child: TextField(
         controller: _searchController,
         decoration: InputDecoration(
-          hintText: 'Affiner la recherche...',
+          hintText: l10n.refineSearch,
           prefixIcon: const Icon(Icons.search, color: AppColors.grey),
           suffixIcon: _searchController.text.isNotEmpty
               ? IconButton(
@@ -159,7 +158,7 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  Widget _buildAdvancedFilters(AppLocalizations l10n) {
+  Widget _buildAdvancedFilters(AppLocalizations l10n, bool isDark) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(16),
@@ -171,19 +170,22 @@ class _SearchScreenState extends State<SearchScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Filtres avancés',
-            style: TextStyle(fontWeight: FontWeight.bold, color: AppColors.blue),
+          Text(
+            l10n.advancedFilters,
+            style: const TextStyle(fontWeight: FontWeight.bold, color: AppColors.blue),
           ),
           const SizedBox(height: 16),
 
           // Types de biens
-          const Text('Type de bien :', style: TextStyle(fontWeight: FontWeight.w500)),
+          Text(
+            l10n.propertyTypeColon,
+            style: const TextStyle(fontWeight: FontWeight.w500),
+          ),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             children: [
-              _buildFilterChip('Tous', _activePropertyType == null, () {
+              _buildFilterChip(l10n.all, _activePropertyType == null, () {
                 setState(() => _activePropertyType = null);
                 context.read<PropertyProvider>().filterByType(null);
               }),
@@ -203,12 +205,15 @@ class _SearchScreenState extends State<SearchScreen> {
           const SizedBox(height: 16),
 
           // Standing
-          const Text('Standing :', style: TextStyle(fontWeight: FontWeight.w500)),
+          Text(
+            l10n.standingColon,
+            style: const TextStyle(fontWeight: FontWeight.w500),
+          ),
           const SizedBox(height: 8),
           Wrap(
             spacing: 8,
             children: [
-              _buildFilterChip('Tous', _activeStanding == null, () {
+              _buildFilterChip(l10n.all, _activeStanding == null, () {
                 setState(() => _activeStanding = null);
                 context.read<PropertyProvider>().filterByStanding(null);
               }),
@@ -233,7 +238,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: OutlinedButton.icon(
               onPressed: _clearAllFilters,
               icon: const Icon(Icons.clear_all),
-              label: const Text('Effacer les filtres'),
+              label: Text(l10n.clearFilters),
               style: OutlinedButton.styleFrom(
                 foregroundColor: AppColors.orange,
                 side: const BorderSide(color: AppColors.orange),
@@ -245,22 +250,22 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  Widget _buildFilterTabs(AppLocalizations l10n) {
+  Widget _buildFilterTabs(AppLocalizations l10n, bool isDark) {
     return Container(
-      height: 50,
+      height: 35,
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          _buildTabChip('Tous', 'all'),
+          _buildTabChip(l10n.all, 'all'),
           const SizedBox(width: 8),
-          _buildTabChip('Résidentiel', 'residential'),
+          _buildTabChip(l10n.residential, 'residential'),
           const SizedBox(width: 8),
-          _buildTabChip('Commercial', 'commercial'),
+          _buildTabChip(l10n.commercial, 'commercial'),
           const SizedBox(width: 8),
-          _buildTabChip('Terrain', 'terrain'),
+          _buildTabChip(l10n.land, 'terrain'),
           const SizedBox(width: 8),
-          _buildTabChip('Spécial', 'special'),
+          _buildTabChip(l10n.special, 'specialisé'),
         ],
       ),
     );
@@ -284,7 +289,7 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
         child: Text(
           label,
-          style: TextStyle(
+          style: TextStyle(fontSize: 12,
             color: isSelected ? AppColors.white : AppColors.grey,
             fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
           ),
@@ -293,31 +298,7 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  void _applyTabFilter(String filter) {
-    final provider = context.read<PropertyProvider>();
-    switch (filter) {
-      case 'all':
-        provider.filterByType(null);
-        break;
-      case 'residential':
-        provider.filterByType(PropertyType.appartement);
-        break;
-      case 'commercial':
-      // Créer un filtre commercial si nécessaire
-        provider.filterByType(null);
-        break;
-      case 'terrain':
-      // Créer un filtre terrain si nécessaire
-        provider.filterByType(null);
-        break;
-      case 'special':
-      // Créer un filtre spécial si nécessaire
-        provider.filterByType(null);
-        break;
-    }
-  }
-
-  Widget _buildResultsSection(AppLocalizations l10n) {
+  Widget _buildResultsSection(AppLocalizations l10n, bool isDark) {
     return Expanded(
       child: Consumer<PropertyProvider>(
         builder: (context, provider, _) {
@@ -341,7 +322,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 child: Row(
                   children: [
                     Text(
-                      '${properties.length} résultat(s) trouvé(s)',
+                      l10n.resultsFound(properties.length),
                       style: const TextStyle(
                         color: AppColors.grey,
                         fontWeight: FontWeight.w500,
@@ -355,9 +336,9 @@ class _SearchScreenState extends State<SearchScreen> {
                           color: AppColors.orange.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Text(
-                          'Filtres actifs',
-                          style: TextStyle(
+                        child: Text(
+                          l10n.filtersActive,
+                          style: const TextStyle(
                             color: AppColors.orange,
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
@@ -368,18 +349,23 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
 
-              // Grille des résultats 2 colonnes
+              // Grille des résultats
               Expanded(
-                child: Wrap(
-                  spacing: 12, // Espacement horizontal
-                  runSpacing: 12, // Espacement vertical
-                  children: properties.map((property) {
-                    return SizedBox(
-                      width: (MediaQuery.of(context).size.width - 44) / 2, // 44 = padding + spacing
-                      child: PropertyCard(property: property),
-                    );
-                  }).toList(),
-                )
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 0.64,
+                    ),
+                    itemCount: properties.length,
+                    itemBuilder: (context, index) {
+                      return PropertyCard(property: properties[index]);
+                    },
+                  ),
+                ),
               ),
             ],
           );
@@ -401,19 +387,19 @@ class _SearchScreenState extends State<SearchScreen> {
               color: AppColors.grey.withOpacity(0.5),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Aucun résultat trouvé',
-              style: TextStyle(
+            Text(
+              l10n.noResultsFound,
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w600,
                 color: AppColors.grey,
               ),
             ),
             const SizedBox(height: 12),
-            const Text(
-              'Essayez de modifier vos filtres pour élargir votre recherche',
+            Text(
+              l10n.noResultsMessage,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: AppColors.grey,
                 height: 1.5,
               ),
@@ -422,7 +408,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ElevatedButton.icon(
               onPressed: _clearAllFilters,
               icon: const Icon(Icons.refresh),
-              label: const Text('Effacer les filtres'),
+              label: Text(l10n.clearFiltersAndRetry),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.orange,
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
@@ -458,6 +444,25 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
+  // Helper methods
+  void _applyTabFilter(String filter) {
+    final provider = context.read<PropertyProvider>();
+    switch (filter) {
+      case 'all':
+        provider.filterByType(null);
+        break;
+      case 'residential':
+        provider.filterByType(PropertyType.appartement);
+        break;
+      case 'commercial':
+      case 'terrain':
+      case 'special':
+      // Pour l'instant, on garde le même comportement
+        provider.filterByType(null);
+        break;
+    }
+  }
+
   void _clearAllFilters() {
     setState(() {
       _activePropertyType = null;
@@ -478,27 +483,36 @@ class _SearchScreenState extends State<SearchScreen> {
         _searchController.text.isNotEmpty;
   }
 
+
   String _getPropertyTypeName(PropertyType type, AppLocalizations l10n) {
     switch (type) {
       case PropertyType.appartement:
-        return 'Appartement';
+        return l10n.apartment;
       case PropertyType.maison:
-        return 'Maison';
+        return l10n.house;
       case PropertyType.studio:
-        return 'Studio';
+        return l10n.studio;
       case PropertyType.chambre:
-        return 'Chambre';
+        return l10n.room;
+      case PropertyType.villa:
+        return 'Villa'; // TODO: Ajouter à l10n
+      case PropertyType.duplex:
+        return 'Duplex'; // TODO: Ajouter à l10n
+      case PropertyType.penthouse:
+        return 'Penthouse'; // TODO: Ajouter à l10n
     }
   }
 
   String _getStandingName(Standing standing, AppLocalizations l10n) {
     switch (standing) {
       case Standing.economique:
-        return 'Économique';
+        return l10n.economical;
       case Standing.standard:
-        return 'Standard';
+        return l10n.standard;
       case Standing.luxe:
-        return 'Luxe';
+        return l10n.luxury;
+      case Standing.hautStanding:
+        return 'Haut Standing'; // TODO: Ajouter à l10n
     }
   }
 }

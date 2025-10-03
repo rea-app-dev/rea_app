@@ -11,62 +11,7 @@ class HamburgerMenu extends StatelessWidget {
       child: Column(
         children: [
           // Header du menu avec logo REA
-          Container(
-            height: 200,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [AppColors.orange, AppColors.blue],
-              ),
-            ),
-            child: SafeArea(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 80,
-                    height: 80,
-                    decoration: BoxDecoration(
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          spreadRadius: 0,
-                          blurRadius: 10,
-                          offset: const Offset(0, 5),
-                        ),
-                      ],
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'REA',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.orange,
-                          letterSpacing: 2,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'PROPERTY MANAGEMENT',
-                    style: TextStyle(
-                      color: AppColors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 1,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-
+          SizedBox(height: 100,),
           // Menu items
           Expanded(
             child: ListView(
@@ -143,54 +88,7 @@ class HamburgerMenu extends StatelessWidget {
             ),
           ),
 
-          // Footer
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              border: Border(
-                top: BorderSide(color: AppColors.lightGrey, width: 1),
-              ),
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    const Icon(Icons.phone, color: AppColors.grey, size: 16),
-                    const SizedBox(width: 8),
-                    Text(
-                      '+237 6XX XXX XXX',
-                      style: TextStyle(
-                        color: AppColors.grey,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                Row(
-                  children: [
-                    const Icon(Icons.email, color: AppColors.grey, size: 16),
-                    const SizedBox(width: 8),
-                    Text(
-                      'support@rea-app.com',
-                      style: TextStyle(
-                        color: AppColors.grey,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Text(
-                  'Version 1.0.0',
-                  style: TextStyle(
-                    color: AppColors.grey,
-                    fontSize: 10,
-                  ),
-                ),
-              ],
-            ),
-          ),
+
         ],
       ),
     );

@@ -1,4 +1,3 @@
-// lib/widgets/common/custom_app_bar.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants/colors.dart';
@@ -16,113 +15,128 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final currentUser = context.watch<AuthProvider>().currentUser;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return AppBar(
-      backgroundColor: AppColors.white,
-      elevation: 1,
-      leading: IconButton(
-        icon: Icon(
-          Icons.menu,
-          color: AppColors.blue,
-        ),
-        onPressed: () {
-          if (scaffoldKey?.currentState != null) {
-            scaffoldKey!.currentState!.openDrawer();
-          } else {
-            Scaffold.of(context).openDrawer();
-          }
-        },
-      ),
-      title: Row(
-        children: [
-          Text(
-            'REA',
-            style: TextStyle(
-              color: AppColors.blue,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const Spacer(),
-          // Solde utilisateur
-          if (currentUser != null)
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: AppColors.lightGrey,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    currentUser.userType.name == 'proprietaire'
-                        ? Icons.account_balance_wallet
-                        : Icons.monetization_on,
-                    size: 16,
-                    color: AppColors.blue,
+      backgroundColor: isDark ? AppColors.darkGrey : AppColors.white,
+      elevation: 0,
+      toolbarHeight: 70,
+      automaticallyImplyLeading: false,
+      title: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+        child: Row(
+          children: [
+            // Logo REA avec icône maison
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: Icon(
+                    Icons.home,
+                    color: isDark ? AppColors.white : AppColors.blue,
+                    size: 35,
                   ),
-                  const SizedBox(width: 4),
-                  Text(
-                    currentUser.userType.name == 'proprietaire'
-                        ? "1000 FCFA"//'${_formatBalance(currentUser.balance)} FCFA'
-                        : "100 coins",//'${currentUser.coins} coins',
-                    style: TextStyle(
-                      color: AppColors.blue,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-        ],
-      ),
-      actions: [
-        // Photo de profil
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => const ProfileScreen(),
-              ),
-            );
-          },
-          child: Container(
-            margin: const EdgeInsets.only(right: 16),
-            child: CircleAvatar(
-              radius: 18,
-              backgroundColor: AppColors.lightGrey,
-              backgroundImage: currentUser?.profilePicture != null
-                  ? NetworkImage(currentUser!.profilePicture!)
-                  : null,
-              child: currentUser?.profilePicture == null
-                  ? Text(
-                currentUser?.firstName.substring(0, 1).toUpperCase() ?? 'U',
-                style: TextStyle(
-                  color: AppColors.blue,
-                  fontWeight: FontWeight.bold,
+                  onPressed: () {
+                    if (scaffoldKey?.currentState != null) {
+                      scaffoldKey!.currentState!.openDrawer();
+                    } else {
+                      Scaffold.of(context).openDrawer();
+                    }
+                  },
                 ),
-              )
-                  : null,
+                Text(
+                  'REA',
+                  style: TextStyle(
+                    color: isDark ? AppColors.white : AppColors.blue,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1,
+                  ),
+                ),
+              ],
             ),
-          ),
+
+            const Spacer(),
+
+            // Badge Reacoins/Solde
+            if (currentUser != null)
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                decoration: BoxDecoration(
+                  color: isDark ? AppColors.darkGrey.withOpacity(0.5) : AppColors.lightGrey,
+                  borderRadius: BorderRadius.circular(25),
+                  border: Border.all(
+                    color: AppColors.grey.withOpacity(0.3),
+                    width: 1,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.add_circle,
+                      size: 20,
+                      color: isDark ? AppColors.white : AppColors.blue,
+                    ),
+                    const SizedBox(width: 6),
+                    Text(
+                      currentUser.userType.name == 'proprietaire'
+                          ? '10 000 FCFA'
+                          : '33 REA coins',
+                      style: TextStyle(
+                        color: isDark ? AppColors.white : AppColors.blue,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+            const SizedBox(width: 12),
+
+            // Photo de profil
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const ProfileScreen(),
+                  ),
+                );
+              },
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: isDark ? AppColors.darkGrey : AppColors.lightGrey,
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: AppColors.grey.withOpacity(0.3),
+                    width: 2,
+                  ),
+                  image: currentUser?.profilePicture != null
+                      ? DecorationImage(
+                    image: NetworkImage(currentUser!.profilePicture!),
+                    fit: BoxFit.cover,
+                  )
+                      : null,
+                ),
+                child: currentUser?.profilePicture == null
+                    ? Icon(
+                  Icons.person,
+                  color: isDark ? AppColors.white : AppColors.blue,
+                  size: 24,
+                )
+                    : null,
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 
-  String _formatBalance(double balance) {
-    if (balance >= 1000000) {
-      return '${(balance / 1000000).toStringAsFixed(1)}M';
-    } else if (balance >= 1000) {
-      return '${(balance / 1000).toStringAsFixed(1)}K';
-    } else {
-      return balance.toInt().toString();
-    }
-  }
-
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(70);
 }

@@ -12,16 +12,6 @@ import '../home/search_screen.dart';
 import '../chat/conversations_screen.dart';
 import '../notifications/notifications_screen.dart';
 
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../core/constants/colors.dart';
-import '../../providers/auth_provider.dart';
-import '../../data/models/user.dart';
-import '../home/home_screen.dart';
-import '../chat/conversations_screen.dart';
-import '../notifications/notifications_screen.dart';
-
 class MainNavigation extends StatefulWidget {
   const MainNavigation({Key? key}) : super(key: key);
 
@@ -65,7 +55,7 @@ class _MainNavigationState extends State<MainNavigation> {
       margin: const EdgeInsets.only(left: 20, right: 20, bottom: 0),
       padding: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(
@@ -79,30 +69,30 @@ class _MainNavigationState extends State<MainNavigation> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildNavItem(
-            icon: LucideIcons.house,
-            activeIcon: LucideIcons.house,
+            icon: Icons.home,
+            activeIcon: Icons.home,
             label: l10n.home,
             index: 0,
           ),
           _buildNavItem(
             icon: user.userType == UserType.locataire
-                ? LucideIcons.layoutDashboard
+                ? LucideIcons.layoutGrid
                 : Icons.business_outlined,
             activeIcon: user.userType == UserType.locataire
-                ? LucideIcons.layoutDashboard
+                ? LucideIcons.layoutGrid
                 : Icons.business,
             label: user.userType == UserType.locataire ? l10n.dashboard : l10n.myProperties,
             index: 1,
           ),
           _buildCenterAddButton(user, l10n),
           _buildNavItem(
-            icon: LucideIcons.messageCircle,
-            activeIcon: LucideIcons.messageCircle,
+            icon: LucideIcons.messageCircleMore,
+            activeIcon: LucideIcons.messageCircleMore,
             label: l10n.chat,
             index: 3,
           ),
           _buildNavItem(
-            icon: LucideIcons.bell,
+            icon: Icons.notifications,
             activeIcon: Icons.notifications,
             label: l10n.notifications,
             index: 4,
@@ -200,47 +190,6 @@ class TenantDashboardScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // Barre de recherche
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).cardColor,
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.grey.withOpacity(0.1),
-                    blurRadius: 8,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Sénégal...',
-                  prefixIcon: const Icon(Icons.menu, color: AppColors.grey),
-                  suffixIcon: const Icon(Icons.my_location, color: AppColors.grey),
-                  border: InputBorder.none,
-                  contentPadding: const EdgeInsets.all(16),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // Filtres
-            Row(
-              children: [
-                Expanded(child: _buildFilterButton(l10n.residential, true)),
-                const SizedBox(width: 8),
-                Expanded(child: _buildFilterButton(l10n.commercial, false)),
-                const SizedBox(width: 8),
-                Expanded(child: _buildFilterButton(l10n.land, false)),
-                const SizedBox(width: 8),
-                Expanded(child: _buildFilterButton(l10n.special, false)),
-              ],
-            ),
-
-            const SizedBox(height: 24),
-
             // Section avec 4 cartes
             GridView.count(
               shrinkWrap: true,
@@ -254,24 +203,28 @@ class TenantDashboardScreen extends StatelessWidget {
                   l10n.tenantSearchHistoryDesc,
                   Icons.history,
                   AppColors.blue,
+                  context,
                 ),
                 _buildDashboardCard(
                   l10n.statistics,
                   l10n.tenantStatsDesc,
                   Icons.analytics,
                   AppColors.green,
+                  context,
                 ),
                 _buildDashboardCard(
                   l10n.communications,
                   l10n.communicationsDesc,
                   Icons.message,
                   AppColors.orange,
+                  context,
                 ),
                 _buildDashboardCard(
                   l10n.becomeOwner,
                   l10n.becomeOwnerDesc,
                   Icons.upgrade,
                   AppColors.blue,
+                  context,
                 ),
               ],
             ),
@@ -303,43 +256,53 @@ class TenantDashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDashboardCard(String title, String description, IconData icon, Color color) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.grey.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
+  Widget _buildDashboardCard(String title, String description, IconData icon, Color color, BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('$title - Bientôt disponible'),
+            backgroundColor: AppColors.blue,
           ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, size: 32, color: color),
-          const SizedBox(height: 12),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: AppColors.blue,
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.grey.withOpacity(0.1),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            description,
-            style: TextStyle(
-              fontSize: 12,
-              color: AppColors.grey,
-              height: 1.3,
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(icon, size: 32, color: color),
+            const SizedBox(height: 12),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).brightness == Brightness.dark ? AppColors.white : AppColors.blue,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Text(
+              description,
+              style: TextStyle(
+                fontSize: 12,
+                color: AppColors.grey,
+                height: 1.3,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -411,6 +374,7 @@ class OwnerDashboardScreen extends StatelessWidget {
                         l10n.ownerAnnouncementsDesc,
                         Icons.home_work,
                         AppColors.blue,
+                        context,
                         isLarge: true,
                       ),
                     ),
@@ -421,6 +385,7 @@ class OwnerDashboardScreen extends StatelessWidget {
                         l10n.ownerStatsDesc,
                         Icons.trending_up,
                         AppColors.green,
+                        context,
                         isLarge: true,
                       ),
                     ),
@@ -437,6 +402,7 @@ class OwnerDashboardScreen extends StatelessWidget {
                         l10n.communicationsDesc,
                         Icons.message,
                         AppColors.orange,
+                        context,
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -446,6 +412,7 @@ class OwnerDashboardScreen extends StatelessWidget {
                         l10n.addPropertyDesc,
                         Icons.add_circle,
                         AppColors.blue,
+                        context,
                       ),
                     ),
                   ],
@@ -480,41 +447,63 @@ class OwnerDashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildOwnerCard(String title, String description, IconData icon, Color color, {bool isLarge = false}) {
-    return Container(
-      height: isLarge ? 150 : 120,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(width: 1),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, size: isLarge ? 32 : 24, color: color),
-          const SizedBox(height: 8),
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: isLarge ? 16 : 14,
-              fontWeight: FontWeight.w600,
-            ),
+  Widget _buildOwnerCard(String title, String description, IconData icon, Color color, BuildContext context, {bool isLarge = false}) {
+    return GestureDetector(
+      onTap: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('$title - Bientôt disponible'),
+            backgroundColor: AppColors.blue,
           ),
-          const SizedBox(height: 4),
-          Text(
-            description,
-            style: TextStyle(
-              fontSize: 10,
-              height: 1.3,
-            ),
+        );
+      },
+      child: Container(
+        height: isLarge ? 150 : 120,
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: AppColors.grey.withOpacity(0.2),
+            width: 1,
           ),
-        ],
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.grey.withOpacity(0.1),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: isLarge ? 32 : 24, color: color),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: isLarge ? 16 : 14,
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).brightness == Brightness.dark ? AppColors.white : AppColors.blue,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              description,
+              style: TextStyle(
+                fontSize: 10,
+                color: AppColors.grey,
+                height: 1.3,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
-
 
 // Écran temporaire pour les propriétaires (ajout de bien)
 class AddPropertyScreen extends StatelessWidget {

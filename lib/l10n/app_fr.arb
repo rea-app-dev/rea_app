@@ -45,7 +45,7 @@
   "residential": "Résidentiel",
   "commercial": "Commercial",
   "land": "Terrain",
-  "special": "Spécial",
+  "special": "Spécialisé",
 
   "propertyDetails": "DÉTAILS DU BIEN:",
   "propertyType": "TYPE:",
@@ -236,6 +236,10 @@
   "english": "English",
   "changeLanguage": "Changer la langue",
   "version": "Version",
+  "villa": "Villa",
+  "duplex": "Duplex",
+  "penthouse": "Penthouse",
+  "highStanding": "Haut Standing",
 
   "personalInfo": "Informations personnelles",
   "editProfile": "Modifier le profil",
@@ -244,5 +248,174 @@
   "logout": "Déconnexion",
 
   "comingSoonFeature": "Fonctionnalité à venir",
-  "test": "test"
+  "test": "test",
+
+  "propertyContactMessage": "Bonjour, je suis intéressé(e) par votre bien : {propertyTitle}",
+  "@propertyContactMessage": {
+    "placeholders": {
+      "propertyTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "errorOpeningChat": "Erreur lors de l'ouverture du chat",
+  "loadingProperties": "Chargement des propriétés...",
+  "errorLoadingProperties": "Erreur lors du chargement des propriétés",
+  "noPropertiesAvailable": "Aucune propriété disponible",
+  "propertyNotFound": "Propriété non trouvée",
+  "invalidPropertyData": "Données de propriété invalides",
+  "networkError": "Erreur de réseau",
+  "serverError": "Erreur serveur",
+  "unknownError": "Erreur inconnue",
+  "retry": "Réessayer",
+  "refresh": "Actualiser",
+  "loading": "Chargement...",
+  "saving": "Enregistrement...",
+  "saved": "Enregistré",
+  "failed": "Échec",
+  "success": "Succès",
+  "warning": "Attention",
+  "info": "Information",
+  "close": "Fermer",
+  "back": "Retour",
+  "next": "Suivant",
+  "previous": "Précédent",
+  "done": "Terminé",
+  "skip": "Ignorer",
+  "selectAll": "Tout sélectionner",
+  "deselectAll": "Tout désélectionner",
+  "noItemsSelected": "Aucun élément sélectionné",
+  "itemsSelected": "{count} élément(s) sélectionné(s)",
+  "@itemsSelected": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "appDescription": "Trouvez votre logement idéal au Cameroun avec REA, la plateforme de gestion immobilière #1.",
+
+  "propertyDetailsTitle": "DÉTAILS DU BIEN:",
+  "standing": "Standing",
+  "ownerInfo": "Informations propriétaire",
+
+  "photosVideos": "PHOTOS / VIDÉOS",
+  "photos": "photos",
+  "perMonth": "par mois",
+  "negotiable": "négociable",
+  "viewsCount": "{count} vues",
+  "@viewsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "publishedOn": "Publié le {date}",
+  "@publishedOn": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+
+  "viewOnMap": "Voir sur la carte",
+  "map": "Carte",
+
+  "memberSince": "Membre depuis {year}",
+  "@memberSince": {
+    "placeholders": {
+      "year": {"type": "String"}
+    }
+  },
+  "reviews": "{count} avis",
+  "@reviews": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+
+  "call": "Appeler",
+  "shareProperty": "Partager ce bien",
+  "copyLink": "Copier lien",
+  "linkCopied": "Lien copié dans le presse-papier",
+
+  "virtualVisitComingSoon": "La visite virtuelle sera bientôt disponible pour ce bien.",
+
+
+  "searchInConversations": "Rechercher dans les conversations...",
+  "findProperties": "Chercher des biens",
+  "now": "Maintenant",
+  "minutesAgo": "Il y a {count} min",
+  "@minutesAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "hoursAgo": "Il y a {count}h",
+  "@hoursAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "daysAgo": "Il y a {count}j",
+  "@daysAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "weeksAgo": "Il y a {count} sem",
+  "@weeksAgo": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "markAsRead": "Marquer comme lu",
+  "pinConversation": "Épingler la conversation",
+  "deleteConversation": "Supprimer la conversation",
+  "deleteConversationConfirm": "Cette action supprimera définitivement la conversation. Continuer ?",
+
+  "unreadNotifications": "{count} notifications non lues",
+  "@unreadNotifications": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "markAllAsRead": "Tout marquer comme lu",
+  "unread": "Non lues",
+  "messages": "Messages",
+  "properties": "Biens",
+  "noUnreadNotifications": "Aucune notification non lue",
+  "noUnreadNotificationsMessage": "Toutes vos notifications ont été lues !",
+  "noMessageNotifications": "Aucun message",
+  "noMessageNotificationsMessage": "Vous n'avez pas de notifications de messages.",
+  "noPropertyNotifications": "Aucune notification de biens",
+  "noPropertyNotificationsMessage": "Aucune activité sur vos biens immobiliers.",
+  "notificationOptions": "Options de notification",
+  "markAsUnread": "Marquer comme non lu",
+  "deleteNotification": "Supprimer la notification",
+  "more": "Plus",
+  "equipments": "Équipements",
+  "description": "Description",
+
+  "platformBadge": "Plateforme Immobilière",
+  "findYour": "Trouvez votre",
+  "idealHome": "Maison idéale",
+  "popularCategories": "Catégories populaires",
+  "newFeature": "Nouvelle fonctionnalité",
+  "discoverPremiumFeatures": "Découvrez les fonctionnalités premium",
+  "citySearchHint": "Entrez une ville",
+  "budgetFcfa": "Budget (FCFA)",
+  "maxPriceHint": "Prix maximum",
+
+  "delete": "Supprimer",
+  "negotiation": "Négociation",
+  "takePhoto": "Prendre une photo",
+  "chooseFromGallery": "Choisir depuis la galerie",
+  "removePhoto": "Supprimer la photo",
+  "verify": "Vérifier",
+
+
+  "helpDescription": "Obtenez de l'aide et du support",
+  "aboutDescription": "En savoir plus sur cette application",
+  "logoutConfirmation": "Voulez-vous vraiment vous déconnecter ?"
+
+
 }
